@@ -115,8 +115,8 @@ Here is the high level architecture of the sample application:
 * Check out the code from this repository using this command:
 
 ```bash
-> mkdir load-testing-serverless-apps && cd load-testing-serverless-apps
-> git clone https://github.com/hariohmprasath/load-testing-serverless-apps.git .
+mkdir load-testing-serverless-apps && cd load-testing-serverless-apps
+git clone https://github.com/hariohmprasath/load-testing-serverless-apps.git .
 ```
 
 ### Front end Build
@@ -127,9 +127,9 @@ Here is the high level architecture of the sample application:
 * Run the below command to build the project using `ng` command from the root directory
 
 ```bash
-> cd frontend
-> npm install
-> ng build
+cd frontend
+npm install
+ng build
 ```
 
 > All the artifacts gets generated under `frontend/dist/vote-angular-app` folder
@@ -139,8 +139,8 @@ Here is the high level architecture of the sample application:
 Run the following command from the root directory
 
 ```bash
-> cd sam
-> sam build
+cd sam
+sam build
 ```
 
 ### Backend Build
@@ -148,8 +148,8 @@ Run the following command from the root directory
 Since SAM build will take care of building, Go module, we require no separate application build. So run the following command from the root directory.
 
 ```bash
-> cd backend/sam
-> sam build
+cd backend/sam
+sam build
 ```
 
 ### Artillery build
@@ -157,8 +157,8 @@ Since SAM build will take care of building, Go module, we require no separate ap
 Build the performance testing framework by running the below command from the root directory
 
 ```bash
-> cd artillery
-> npm install
+cd artillery
+npm install
 ```
 
 ## Deployment
@@ -168,8 +168,8 @@ Build the performance testing framework by running the below command from the ro
 Run the following command to deploy the backend application
 
 ```bash
-> cd sam
-> sam deploy --guided
+cd sam
+sam deploy --guided
 ```
 
 > You can either customer or use the default values to run the sam deployment.
@@ -200,8 +200,8 @@ Value               https://xxxx.execute-api.us-east-1.amazonaws.com/Prod/
 Run the following command to deploy the front end stack
 
 ```bash
-> cd sam
-> sam deploy --guided
+cd sam
+sam deploy --guided
 ```
 
 > You can either customer or use the default values to run the sam deployment.
@@ -230,7 +230,7 @@ Value               arn:aws:s3:::s3hosting-app-s3bucket-xxxx
 * Navigate to `frontend/dist/vote-angular-app` and run the following command
 
 ```bash
-> aws s3 sync . s3://<<s3-bucket>>
+aws s3 sync . s3://<<s3-bucket>>
 ```
 
 > Replace the S3 bucket with the generated S3 bucket name.
@@ -368,9 +368,9 @@ fec497b1-5783-4063-b03e-9b4ea8bf85323c22fbba908c
 > Note: `export` and `set` command may vary depending upon the operating system in which these commands gets executed.
 
 ```bash
-> export URL=<<APIGateWayURL>>
-> export SURVEY_ID=<<SurverID_from_previous_step>>
-> artillery run load-test.yml
+export URL=<<APIGateWayURL>>
+export SURVEY_ID=<<SurverID_from_previous_step>>
+artillery run load-test.yml
 ```
 
 Here is the sample output of the run:
