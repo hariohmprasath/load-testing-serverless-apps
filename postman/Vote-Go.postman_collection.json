@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "b8bd1a0e-e383-4fab-ac40-2b72ed8e0770",
+		"name": "Vote-Go",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Survey",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"surveyName\",\n    \"questionsAndAnswers\": [\n        {\n            \"question\": \"Question\",\n            \"answers\": [\n                {\n                    \"answer\": \"Ans1\"\n                },\n                {\n                    \"answer\": \"Ans2\"\n                },\n                {\n                    \"answer\": \"Ans3\"\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{rooturl}}",
+					"host": [
+						"{{rooturl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Survey",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{rooturl}}?surveyId=fec497b1-5783-4063-b03e-9b4ea8bf8532",
+					"host": [
+						"{{rooturl}}"
+					],
+					"query": [
+						{
+							"key": "surveyId",
+							"value": "fec497b1-5783-4063-b03e-9b4ea8bf8532"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vote",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{rooturl}}?surveyId=fec497b1-5783-4063-b03e-9b4ea8bf8532&questionId=0&answerId=0",
+					"host": [
+						"{{rooturl}}"
+					],
+					"query": [
+						{
+							"key": "surveyId",
+							"value": "fec497b1-5783-4063-b03e-9b4ea8bf8532"
+						},
+						{
+							"key": "questionId",
+							"value": "0"
+						},
+						{
+							"key": "answerId",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recreate",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{rooturl}}?recreate=true",
+					"host": [
+						"{{rooturl}}"
+					],
+					"query": [
+						{
+							"key": "recreate",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{rooturl}}",
+					"host": [
+						"{{rooturl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "rooturl",
+			"value": "https://sp45do9mm4.execute-api.us-east-1.amazonaws.com/Prod/"
+		}
+	]
+}

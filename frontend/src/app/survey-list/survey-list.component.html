@@ -1,0 +1,42 @@
+<div class="container" style="margin-top: 70px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{survey.Name}}</h3>
+    </div>
+    <div class="panel-body">
+      <button type="button" color="primary" (click)="recreate()">Build Sample Survey</button>
+      <br>
+    </div>
+  </div>
+
+  <table class="table table-hover" style="width: 100%">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Question</th>
+      <th>Poll Results</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr style="width:200px;height:100px;border:1px solid gray;" *ngFor="let q of questions; let i=index">
+      <td>{{i + 1}}</td>
+      <td [style]="q.Voted && {'opacity': '0.5', 'pointer-events':'none'} || null">
+        <p>{{q.Question}}</p>
+        <div *ngFor="let a of q.Answers; let j=index">
+          <input name="{{q.QuestionId}}" (change)="selected(q, a.AnswerId)" type="radio">
+          &nbsp;&nbsp;&nbsp;
+          <label>{{a.Answer}}</label>
+        </div>
+      </td>
+      <td>
+        <canvas baseChart
+                [data]="q.Votes"
+                [labels]="q.VoteLabels"
+                [legend]="false"
+                [options]="options"
+                [chartType]="'bar'"></canvas>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

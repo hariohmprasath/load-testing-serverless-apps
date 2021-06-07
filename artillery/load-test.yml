@@ -1,0 +1,36 @@
+config:
+  processor: "artillery.js"
+  target: "{{ $processEnvironment.URL }}"  
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
+scenarios:
+  - name: "Get Survey and Vote"
+    flow:
+      - get:
+          url: "/?surveyId={{ $processEnvironment.SURVEY_ID }}" # Get questions for survey
+          afterResponse: "randomPick" # javascript function to randomly pick a question and answer
+          expect:
+            - statusCode: 200
+            - contentType: json
+            - hasProperty: QuestionsAndAnswers
+      - put:
+          url: "/?surveyId={{ $processEnvironment.SURVEY_ID }}&questionId={{ questionId }}&answerId={{ answerId }}" # Vote on it
+          expect:
+            - statusCode: 200
+  - name: Get Votes
+    flow:
+      - get:
+          url: "/?surveyId={{ $processEnvironment.SURVEY_ID }}" # Get questions and votes          
+          expect:
+            - statusCode: 200
+            - contentType: json
+            - hasProperty: QuestionsAndAnswers

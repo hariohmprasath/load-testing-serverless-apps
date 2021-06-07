@@ -1,0 +1,8 @@
+.DS_Store
+**/.aws-sam/*
+**/go.sum
+**/samconfig.toml
+**/node_modules
+**/package-lock.json
+**/dist
+**/.idea/*

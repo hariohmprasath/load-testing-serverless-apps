@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+    Cors: "'*'"
+Resources:
+  SurveyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../survey/
+      Handler: survey
+      Runtime: go1.x
+      MemorySize: 512
+      Tracing: Active
+      Timeout: 30
+      Policies: AmazonDynamoDBFullAccess
+      Events:
+        HttpPost:
+          Type: Api
+          Properties:
+            Path: '/'
+            Method: post
+        HttpGet:
+          Type: Api
+          Properties:
+            Path: '/'
+            Method: get
+        HttpPut:
+          Type: Api
+          Properties:
+            Path: '/'
+            Method: put
+        HttpDelete:
+          Type: Api
+          Properties:
+            Path: '/'
+            Method: delete
+Outputs:
+  VoterAPI:
+    Description: "API Gateway endpoint URL for Prod environment "
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
+  VoterFunction:
+    Description: "Lambda Function ARN"
+    Value: !GetAtt SurveyFunction.Arn
