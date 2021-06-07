@@ -412,7 +412,7 @@ aws cloudformation delete-stack --stack-name s3hosting-app
 ### Backend cleanup
 
 ```bash
-> aws cloudformation delete-stack --stack-name sam-app
+aws cloudformation delete-stack --stack-name sam-app
 ```
 
 ## Resources
