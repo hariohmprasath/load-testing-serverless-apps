@@ -112,11 +112,11 @@ Here is the high level architecture of the sample application:
 
 * An AWS account with console and API access
 
-* Check out the code from this repository and navigate inside the checked out directory using this command:
+* Check out the code from this repository using this command:
 
 ```bash
-> git clone git@ssh.gitlab.aws.dev:am3-app-modernization-gsp/serverless/performance-test-serverless-apps-sam.git 
-> cd performance-test-serverless-apps-sam
+> mkdir load-testing-serverless-apps && cd load-testing-serverless-apps
+> git clone https://github.com/hariohmprasath/load-testing-serverless-apps.git .
 ```
 
 ### Front end Build
