@@ -230,7 +230,7 @@ Value               arn:aws:s3:::s3hosting-app-s3bucket-xxxx
 * Navigate to `frontend/dist/vote-angular-app` and run the following command
 
 ```bash
-> aws s3 sync * s3://<<s3-bucket>>
+> aws s3 sync . s3://<<s3-bucket>>
 ```
 
 > Replace the S3 bucket with the generated S3 bucket name.
